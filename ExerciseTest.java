@@ -128,7 +128,6 @@ public class ExerciseTest {
                 }
                 System.setOut(old);
                 String actual = baos.toString();
-                //System.out.println(expected + " " + actual);
                 this.singleTestGrade = calcSingleTestGrade(expected, actual);
             }
 
@@ -136,7 +135,12 @@ public class ExerciseTest {
                 if(this.returnType == studentMethod.getReturnType()) { //otherwise, grade=0
                     String actual = null;
                     try {
-                        actual = (studentMethod.invoke(someInstance, inputArgs)).toString();
+                        if(returnType.isArray()) {
+                            actual = Arrays.toString((Object[]) studentMethod.invoke(someInstance, inputArgs));
+                        }
+                        else {
+                            actual = studentMethod.invoke(someInstance, inputArgs).toString();
+                        }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     } catch (InvocationTargetException e) {
