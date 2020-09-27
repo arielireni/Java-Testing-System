@@ -1,14 +1,18 @@
+package src;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
 public class ExerciseTest {
-    private Class studentClass;
+    private Class<?> studentClass;
     private List<Integer> questionsGrades = new LinkedList<>();
     private int [] questionsScore;
     private int totalGrade;
+    private boolean calculated = false;
 
     public ExerciseTest(String className, int [] questionsScore) {
         // initializing student class
@@ -29,6 +33,7 @@ public class ExerciseTest {
 
     private void calcTotalGrade() {
         if(questionsGrades.size() != questionsScore.length) {
+            System.out.println(questionsGrades.toString()+" "+Arrays.toString(questionsScore));
             System.out.println("Error: the number of questions examined does not match the number of questions requested");
         }
         else {
@@ -39,7 +44,10 @@ public class ExerciseTest {
     }
 
     public int getTotalGrade() {
-        calcTotalGrade();
+        if(! calculated) {
+            calcTotalGrade();
+            calculated = true;
+        }
         return this.totalGrade;
     }
 
@@ -55,11 +63,12 @@ public class ExerciseTest {
 
     public class QuestionTest {
         private Method studentMethod;
-        private Class [] inputClasses;
+        private Class<?> [] inputClasses;
         private List<Integer> testsGrades = new LinkedList<>();
         private int questionGrade;
+        private boolean calculated = false;
 
-        public QuestionTest(String methodName, Class [] inputClasses) {
+        public QuestionTest(String methodName, Class<?> [] inputClasses) {
             this.inputClasses = inputClasses;
             // initializing student method
             try {
@@ -80,10 +89,13 @@ public class ExerciseTest {
                 this.questionGrade = result / cnt;
             }
             questionsGrades.add(this.questionGrade);
+            calculated = true;
         }
 
         public int getQuestionGrade() {
-            calcQuestionGrade();
+            if(! this.calculated) {
+                calcQuestionGrade();
+            }
             return this.questionGrade;
         }
 
@@ -91,12 +103,12 @@ public class ExerciseTest {
         // INNER CLASS in QuestionTest
 
         public class SingleTest {
-            private Class returnType;
+            private Class<?> returnType;
             private Object[] inputArgs;
             private Object someInstance;
             private int singleTestGrade;
 
-            public SingleTest(Class returnType, Object[] inputArgs, Object someInstance, String expected, boolean moreTests) {
+            public SingleTest(Class<?> returnType, Object[] inputArgs, Object someInstance, String expected, boolean moreTests) {
                 this.returnType = returnType;
                 this.inputArgs = inputArgs;
                 this.someInstance = someInstance;
@@ -136,7 +148,7 @@ public class ExerciseTest {
                     String actual = null;
                     try {
                         if(returnType.isArray()) {
-                            actual = Arrays.toString((Object[]) studentMethod.invoke(someInstance, inputArgs));
+                            actual = Arrays.deepToString((Object[]) studentMethod.invoke(someInstance, inputArgs));
                         }
                         else {
                             actual = studentMethod.invoke(someInstance, inputArgs).toString();
@@ -165,7 +177,12 @@ public class ExerciseTest {
                         wrong += 1;
                     }
                 }
-                grade = (int) ((correct / (correct + wrong)) * 100);
+                if(wrong == 0) {
+                    grade = 100;
+                }
+                else {
+                    grade = (int) ((correct / (correct + wrong)) * 100);
+                }
                 return grade;
             }
 
@@ -174,4 +191,7 @@ public class ExerciseTest {
             }
         }
     }
+
 }
+
+
