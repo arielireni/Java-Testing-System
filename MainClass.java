@@ -1,5 +1,3 @@
-package src;
-
 import il.ac.tau.cs.sw1.ex5.*;
 
 import java.io.FileNotFoundException;
@@ -145,7 +143,7 @@ public class MainClass {
         }
 
         try {
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\student1.xlsx");
+            FileOutputStream outputStream = new FileOutputStream("filePath");
             workbook.write(outputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
