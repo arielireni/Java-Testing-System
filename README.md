@@ -10,8 +10,9 @@ Testing system for "Software 1" course at TAU
 
 ## Technologies & Programming Languages
 - Java (tester files & user environment)
-  - Apache POI, methods replection
+  - Apache POI, methods replection, classes loading
 - Python (data analysis)
+  - matplotlib, numpy, xlrd
   
   
 ## Screenshots
