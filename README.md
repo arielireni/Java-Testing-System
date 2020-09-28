@@ -5,7 +5,7 @@ Testing system for "Software 1" course at TAU
 
 ## Purpose
 - Calculation of student grades according to java files submitted by them
-- Export the grade breakdown for students in Excel files
+- Export the grade calculation for students in Excel files
 - Analyzing students results
 
 ## Technologies & Programming Languages
