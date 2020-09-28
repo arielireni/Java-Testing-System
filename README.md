@@ -10,9 +10,9 @@ Testing system for "Software 1" course at TAU
 
 ## Technologies & Programming Languages
 - Java (tester files & user environment)
-  - pandas
-- Python (data analysis)
   - Apache POI, methods replection
+- Python (data analysis)
+  
   
 ## Screenshots
 
