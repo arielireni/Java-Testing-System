@@ -1,6 +1,6 @@
 # Java Testing System
 
-## Short Description
+## Description
 Testing system for "Software 1" course at TAU
 
 ## Purpose
