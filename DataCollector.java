@@ -19,7 +19,7 @@ public class DataCollector {
 
         this.numOfTests = numOfTests;
         this.numOfQuestions = numOfTests.length;
-        File f = new File(filepath);
+        File f = new File("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
         if(! f.exists()) {
             this.workbook = new XSSFWorkbook();
             this.sheet = workbook.createSheet("Data");
@@ -29,8 +29,9 @@ public class DataCollector {
                 cell.setCellValue("Question " + (i+1));
             }
             try {
-                FileOutputStream outputStream = new FileOutputStream(filepath);
+                FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
                 workbook.write(outputStream);
+                outputStream.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -41,8 +42,8 @@ public class DataCollector {
 
     public void addTestGrade(int questionNum, int testNum, int grade, int numOfStudents) {
         try {
-            FileInputStream input = new FileInputStream(new File(filepath));
-            XSSFWorkbook workbook = new XSSFWorkbook(input);
+            FileInputStream inputStream = new FileInputStream(new File("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx"));
+            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Row row = sheet.getRow(questionNum - 1);
             if(row.getCell(testNum) == null) { // insert grade of the first student
@@ -53,8 +54,10 @@ public class DataCollector {
                 Cell cell = row.getCell(testNum);
                 cell.setCellValue((cell.getNumericCellValue() * (numOfStudents - 1) + grade) / numOfStudents);
             }
-            FileOutputStream outputStream = new FileOutputStream(filepath);
+            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
             workbook.write(outputStream);
+            inputStream.close();
+            outputStream.close();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
