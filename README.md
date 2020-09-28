@@ -18,4 +18,4 @@ Testing system for "Software 1" course at TAU
 
 
 ## Will be in the future
-- [ ] bash script for executing all students files
+- [ ] bash script for executing all students files in Linux environment
