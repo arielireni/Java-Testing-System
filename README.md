@@ -18,10 +18,12 @@ Testing system for "Software 1" course at TAU
 ## Screenshots
 - Tester Results bars plot
   - Each bar represents an average score in a test conducted in question
+  
   <img src="/screenshots/Figure_1.png" width="50%" height="50%">
 
 - Common Mistakes table plot
   - A table showing all the tests in which the average score of the students is below 80
+  
   <img src="/screenshots/Figure_2.png" width="40%" height="40%">
 
 
