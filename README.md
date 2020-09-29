@@ -9,20 +9,20 @@ Testing system for "Software 1" course at TAU
 - Analyzing students results
 
 ## Technologies & Programming Languages
-- Java (testing files & user (tester) environment)
+- **Java** (testing files & user (tester) environment)
   - Apache POI, methods replection, classes loading
-- Python (data analysis)
-  - matplotlib, numpy, xlrd
+- **Python** (data analysis)
+  - matplotlib, numpy, xlrd, xlsxwriter
   
   
 ## Screenshots
 - Tester Results bars plot
-  - Each bar represents an average score in a test conducted in question
+  *Each bar represents an average score in a test conducted in question*
   
   <img src="/screenshots/Figure_1.png" width="50%" height="50%">
 
 - Common Mistakes table plot
-  - A table showing all the tests in which the average score of the students is below 80
+  *A table showing all the tests in which the average score of the students is below 80*
   
   <img src="/screenshots/Figure_2.png" width="40%" height="40%">
 
