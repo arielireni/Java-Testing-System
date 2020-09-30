@@ -1,11 +1,8 @@
-package src;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
 
 
@@ -19,7 +16,7 @@ public class DataCollector {
 
         this.numOfTests = numOfTests;
         this.numOfQuestions = numOfTests.length;
-        File f = new File("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
+        File f = new File("filepath");
         if(! f.exists()) {
             this.workbook = new XSSFWorkbook();
             this.sheet = workbook.createSheet("Data");
@@ -29,7 +26,7 @@ public class DataCollector {
                 cell.setCellValue("Question " + (i+1));
             }
             try {
-                FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
+                FileOutputStream outputStream = new FileOutputStream("filepath");
                 workbook.write(outputStream);
                 outputStream.close();
             } catch (FileNotFoundException e) {
@@ -42,7 +39,7 @@ public class DataCollector {
 
     public void addTestGrade(int questionNum, int testNum, int grade, int studentNum, String expected) {
         try {
-            FileInputStream inputStream = new FileInputStream(new File("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx"));
+            FileInputStream inputStream = new FileInputStream(new File("filepath"));
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Row row = sheet.getRow(questionNum - 1);
@@ -56,7 +53,7 @@ public class DataCollector {
                 Cell cell = row.getCell(testNum * 2);
                 cell.setCellValue((cell.getNumericCellValue() * (studentNum - 1) + grade) / studentNum);
             }
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
+            FileOutputStream outputStream = new FileOutputStream("filepath");
             workbook.write(outputStream);
             inputStream.close();
             outputStream.close();
@@ -70,7 +67,7 @@ public class DataCollector {
     }
     public void commonMistakesSheet() {
         try {
-            FileInputStream inputStream = new FileInputStream(new File("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx"));
+            FileInputStream inputStream = new FileInputStream(new File("filepath"));
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
             XSSFSheet mistakesSheet = workbook.getSheet("Common Mistakes");
@@ -95,7 +92,7 @@ public class DataCollector {
                     }
                 }
             }
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx");
+            FileOutputStream outputStream = new FileOutputStream("filepath");
             workbook.write(outputStream);
             inputStream.close();
             outputStream.close();
