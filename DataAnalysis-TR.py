@@ -4,7 +4,7 @@ import numpy as np
 import xlrd
 import xlsxwriter
 
-workbook = xlrd.open_workbook("C:\\Users\\Eli\\Desktop\\testGrades\\dataCollector.xlsx")
+workbook = xlrd.open_workbook("input_path")
 sheet = workbook.sheet_by_index(0)
 
 lables = []
@@ -46,7 +46,7 @@ add_bar_value(rects2)
 plt.show()
 
 # save the plot into excel file
-outputWorkbook = xlsxwriter.Workbook("C:\\Users\\Eli\\Desktop\\testGrades\\plots.xlsx")
+outputWorkbook = xlsxwriter.Workbook("output path")
 outputSheet = outputWorkbook.add_worksheet("Test Results")
 imgdata = io.BytesIO()
 fig.savefig(imgdata, format='png')
