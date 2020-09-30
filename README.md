@@ -1,7 +1,7 @@
 # Java Testing System
 
 ## Description
-Testing system for "Software 1" course at TAU
+Testing system for "Software 1" course at TAU.
 
 ## Purpose
 - Calculation of student grades according to java files submitted by them
