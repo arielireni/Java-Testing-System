@@ -4,7 +4,7 @@ import io
 import xlrd
 import xlsxwriter
 
-workbook = xlrd.open_workbook("input_path")
+workbook = xlrd.open_workbook("dataCollector.xlsx")
 sheet = workbook.sheet_by_index(1)
 
 title_text = 'Common Mistakes'
@@ -32,7 +32,7 @@ fig = plt.gcf()
 plt.show()
 
 # save the plot into excel file
-outputWorkbook = xlsxwriter.Workbook("output_path")
+outputWorkbook = xlsxwriter.Workbook("plots.xlsx")
 outputSheet = outputWorkbook.add_worksheet("Common Mistakes")
 imgdata = io.BytesIO()
 fig.savefig(imgdata, format='png')

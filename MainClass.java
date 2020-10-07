@@ -1,14 +1,13 @@
-import il.ac.tau.cs.sw1.ex5.*;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.io.FileOutputStream;
-
+import il.ac.tau.cs.sw1.ex5.BigramModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 
 
 public class MainClass {
@@ -16,12 +15,14 @@ public class MainClass {
     public static void main(String[] args) throws IOException {
         // test for a student - for exercise 5
         int [] numOfTests = {1,1,1,1,1,2,1,2,1,2};
+        // NOTE: if you would like to use the data analysis tools you need to create an instance of DataCollector as bellow:
         DataCollector dataC = new DataCollector(numOfTests);
         // dataC.commonMistakesSheet(); // run this only after testing all students
+
         int [] questionsScore = {15, 15, 10, 10, 5, 5, 10, 5, 10, 15};
 
         // STUDENT 1
-        ExerciseTest student1 = new ExerciseTest("il.ac.tau.cs.sw1.ex5.BigramModel4", questionsScore);
+        ExerciseTest student1 = new ExerciseTest("il.ac.tau.cs.sw1.ex5.BigramModel", questionsScore);
         // initializing questions for this student
         Class [] op1_inputClasses = {String.class};
         Class [] op2_inputClasses = {String.class, String[].class};
@@ -39,7 +40,7 @@ public class MainClass {
         ExerciseTest.QuestionTest question10 = student1.new QuestionTest("getClosestWord", op1_inputClasses);
 
         // initializing single tests for each question
-        il.ac.tau.cs.sw1.ex5.BigramModel4 someInstance = new BigramModel4();
+        BigramModel someInstance = new BigramModel();
         int studentNum = 5;
         // Q1 //
         Object[] test11_inputs = {"resources/hw5/all_you_need.txt"};
@@ -135,7 +136,7 @@ public class MainClass {
         }
 
         try {
-            FileOutputStream outputStream = new FileOutputStream("studentScorePath");
+            FileOutputStream outputStream = new FileOutputStream("studentGrade.xlsx");
             workbook.write(outputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
