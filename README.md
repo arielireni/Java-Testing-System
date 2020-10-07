@@ -14,7 +14,7 @@ Testing system for "Software 1" course at TAU.
 - **Python** (data analysis)
   - matplotlib, numpy, xlrd, xlsxwriter
  - **Shell** (executing the test for all students)
-  - bash
+   - bash
   
   
 ## Screenshots
