@@ -13,6 +13,8 @@ Testing system for "Software 1" course at TAU.
   - Apache POI, methods replection, classes loading
 - **Python** (data analysis)
   - matplotlib, numpy, xlrd, xlsxwriter
+ - **Shell** (executing the test for all students)
+  - bash
   
   
 ## Screenshots
@@ -26,6 +28,4 @@ Testing system for "Software 1" course at TAU.
   
      <img src="/screenshots/Figure_2.png" width="45%" height="45%">
 
-
-## Will be in the future
-- [ ] bash script for executing all students files in Linux environment
+t
